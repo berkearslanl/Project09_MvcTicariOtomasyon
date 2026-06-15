@@ -1,0 +1,47 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Fatura
+@{
+    ViewBag.Title = "FaturaGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Fatura Güncelle</h2>
+
+    @using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.FaturaId)
+        @Html.HiddenFor(x => x.Durum)
+        @Html.HiddenFor(x => x.Tarih)
+        @Html.HiddenFor(x => x.Saat)
+
+        <div class="mb-3">
+            <label>Seri No</label>
+            @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FaturaSeriNo, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Sıra No</label>
+            @Html.TextBoxFor(x => x.FaturaSıraNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FaturaSıraNo, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Teslim Eden</label>
+            @Html.TextBoxFor(x => x.TeslimEden, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.TeslimEden, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Teslim Alan</label>
+            @Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.TeslimAlan, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Vergi Dairesi</label>
+            @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.VergiDairesi, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Toplam Tutar</label>
+            @Html.TextBoxFor(x => x.Toplam, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Toplam, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+        </div>
+
+        <button class="btn btn-warning">Güncelle</button>
+        <a href="/Fatura/Index" class="btn btn-secondary">Vazgeç</a>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.SatisHareket>
+@{
+    ViewBag.Title = "DepartmanPersonelSatis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Personel Satış</h2>
+<div class="card-body">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"><b>@ViewBag.personel</b> personelinin satışları</li>
+    </ol>
+    <table class="table table-striped">
+        <tr>
+            <th>Ürün</th>
+            <th>Cari</th>
+            <th>Fiyat</th>
+            <th>Adet</th>
+            <th>Toplam Fiyat</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach(var x in Model)
+            {
+                <tr>
+                    <td>@x.Urun.UrunAd</td>
+                    <td>@x.Cari.CariAd @x.Cari.CariSoyad</td>
+                    <td>@x.Fiyat</td>
+                    <td>@x.Adet</td>
+                    <td>@x.ToplamTutar</td>
+                    <td>@x.Tarih.ToString("dd MMMM yyyy")</td>
+                    <td><a href="/Departman/PersonelSatisYazdir" class="btn btn-warning">Yazdır</a></td>
+                </tr>
+            }
+    </table>
+</div>

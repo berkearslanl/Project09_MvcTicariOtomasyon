@@ -1,0 +1,24 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.SatisHareket>
+@{
+    ViewBag.Title = "Siparislerim";
+    Layout = "~/Views/Shared/CariLayout.cshtml";
+}
+
+<br />
+<h2>Sipariş Geçmişim</h2>
+<br />
+<table class="table table-striped-columns">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach(var x in Model)
+            {
+                <tr>
+                    <td>@x.Urun.UrunAd</td>
+                    <td>@x.Fiyat ₺</td>
+                    <td>@x.Tarih.ToString("dd MMMM yyyy")</td>
+                </tr>
+            }
+</table>

@@ -1,0 +1,37 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Personel
+@{
+    ViewBag.Title = "PersonelGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Personel Güncelle</h2>
+
+    @using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post, new {enctype="multipart/form-data"}))
+    {
+        @Html.HiddenFor(x => x.PersonelId)
+        @Html.HiddenFor(x => x.Durum)
+
+        <div class="mb-3">
+            <label>Personel Adı</label>
+            @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PersonelAd, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Personel Soyadı</label>
+            @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PersonelSoyad, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Personel Görseli</label>
+            <input type="file" name="PersonelGorsel" class="form-control" />
+            @Html.ValidationMessageFor(x => x.PersonelGorsel, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Personelin Departmanı</label>
+            @Html.DropDownListFor(x => x.DepartmantId, (List<SelectListItem>)ViewBag.Degerler, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DepartmantId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+        </div>
+
+        <button class="btn btn-warning">Güncelle</button>
+        <a href="/Personel/Index" class="btn btn-secondary">Vazgeç</a>
+    }
+</div>

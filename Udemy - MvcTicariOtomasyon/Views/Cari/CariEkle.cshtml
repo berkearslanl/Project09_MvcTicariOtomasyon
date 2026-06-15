@@ -1,0 +1,35 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Cari
+@{
+    ViewBag.Title = "CariEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Yeni Cari Ekle</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Cari Adı</label>
+            <input type="text" name="CariAd" class="form-control" />
+            @Html.ValidationMessageFor(x => x.CariAd, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Cari Soyadı</label>
+            <input type="text" name="CariSoyad" class="form-control" />
+            @Html.ValidationMessageFor(x => x.CariSoyad, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Cari Şehir</label>
+            <input type="text" name="CariSehir" class="form-control" />
+            @Html.ValidationMessageFor(x => x.CariSehir, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Cari Mail</label>
+            <input type="text" name="CariMail" class="form-control" />
+            @Html.ValidationMessageFor(x => x.CariMail, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+        </div>
+
+        <button class="btn btn-primary">Kaydet</button>
+        <a href="/Cari/Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>
+
+

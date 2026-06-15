@@ -1,0 +1,20 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.Mesaj>
+@foreach (var x in Model)
+{
+    <div class="timeline timeline-inverse">
+        <div class="time-label">
+            <span class="bg-danger">
+                @x.Tarih.ToString("dd MMM yyyy")
+            </span>
+        </div>
+        <div>
+            <i class="fas fa-envelope bg-primary"></i>
+            <div class="timeline-item">
+                <span class="time"><i class="far fa-clock"></i> @x.Tarih.ToShortTimeString()</span>
+                <h3 class="timeline-header"><a href="#">@x.Gönderici</a> bir duyuru paylaştı.   <a href="#">Konu: </a> @x.Konu</h3>
+                <div class="timeline-body">@x.icerik
+                </div>
+            </div>
+        </div>
+    </div>
+}

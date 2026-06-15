@@ -1,0 +1,55 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Ürünler</h2>
+    <div class="d-flex justify-content-end mb-3">
+        @using (Html.BeginForm("Index", "Urun", FormMethod.Get, new { @class = "d-flex" }))
+        {
+            @Html.TextBox("p", null, new
+            {
+                @class = "form-control me-2",
+                placeholder = "Ürün ara..."
+            })
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        }
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Görsel</th>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Marka</th>
+            <th>Stok</th>
+            <th>Alış Fiyat</th>
+            <th>Satış Fiyat</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@x.UrunGorsel" class="img-thumbnail" style="width:100px;height:100px;object-fit:cover;" />
+                </td>
+                <td>@x.UrunAd</td>
+                <td>@x.Kategori.KategoriAd</td>
+                <td>@x.Marka</td>
+                <td>@x.Stok</td>
+                <td>@x.AlisFiyat ₺</td>
+                <td>@x.SatisFiyat ₺</td>
+                <td>
+                    <a href="/Urun/UrunGuncelle/@x.UrunId" class="btn btn-warning">Düzenle</a>
+                    <a href="/Urun/UrunSil/@x.UrunId" class="btn btn-danger">Sil</a>
+                    <a href="/Urun/SatisYap/@x.UrunId" class="btn btn-info">Satış Yap</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Urun/UrunEkle" class="btn btn-outline-primary">Yeni Ürün</a>
+</div>

@@ -1,0 +1,286 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/web2/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/web2/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/web2/css/font-awesome.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link href="~/web2/css/nav.css" rel="stylesheet" type="text/css" media="all" />
+
+    <style>
+        /* Kutuların temel yapısı ve standart yüksekliği */
+        .sales, .new-users, .orders, .visitors {
+            position: relative;
+            min-height: 100px; /* Tüm kutuların her durumda eşit boyda görünmesini sağlar */
+            padding: 20px 15px;
+            box-sizing: border-box;
+        }
+
+        /* İkonların dikeyde kusursuz ortalanması */
+        .dashboard-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%); /* Ne kadar yazı olursa olsun ikonu ortalar */
+            color: #fff;
+            font-size: 30px;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* Yazı alanı kapsayıcısı */
+        .icon-text {
+            padding-left: 65px; /* İkonun genişliğini kurtaracak kadar sol boşluk */
+            color: white;
+        }
+
+            /* Sayıların (h3) düzenlenmesi ve boşlukların sıfırlanması */
+            .icon-text h3 {
+                color: white;
+                margin: 0; /* Düzeni bozan varsayılan dış boşluğu siliyoruz */
+                padding: 0;
+                font-size: 26px; /* Yazı boyutunu taşırmayacak şekilde sabitliyoruz */
+                font-weight: bold;
+                line-height: 1.2;
+            }
+
+            /* Alt başlıkların (p) düzenlenmesi */
+            .icon-text p {
+                color: white;
+                margin: 5px 0 0 0; /* Sayı ile metin arasına sadece hafif bir boşluk bırakıyoruz */
+                padding: 0;
+                font-size: 15px;
+                opacity: 0.9; /* Gözü yormaması için hafif saydamlık */
+            }
+    </style>
+
+</head>
+<body>
+
+    <!-- 1. SATIR -->
+    <div class="total-content">
+        <div class="list_of_members">
+
+            <div class="sales" style="background-color:#1abc9c">
+                <div class="dashboard-icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d1</h3>
+                    <p>Toplam Cari</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="new-users" style="background-color:#2ecc71">
+                <div class="dashboard-icon">
+                    <i class="fa fa-cubes"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d2</h3>
+                    <p>Ürün Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="orders" style="background-color:#3498db">
+                <div class="dashboard-icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d3</h3>
+                    <p>Personel Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="visitors" style="background-color:#9b59b6">
+                <div class="dashboard-icon">
+                    <i class="fa fa-tags"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d4</h3>
+                    <p>Kategori Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- 2. SATIR -->
+    <div class="total-content">
+        <div class="list_of_members">
+
+            <div class="sales" style="background-color:#16a085">
+                <div class="dashboard-icon">
+                    <i class="fa fa-database"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d5</h3>
+                    <p>Toplam Stok</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="new-users" style="background-color:#27ae60">
+                <div class="dashboard-icon">
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d6</h3>
+                    <p>Marka Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="orders" style="background-color:#2980b9">
+                <div class="dashboard-icon">
+                    <i class="fa fa-exclamation-triangle"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d7</h3>
+                    <p>Kritik Seviye</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="visitors" style="background-color:#8e44ad">
+                <div class="dashboard-icon">
+                    <i class="fa fa-arrow-circle-up"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d8</h3>
+                    <p>Max Fiyatlı Ürün</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- 3. SATIR -->
+    <div class="total-content">
+        <div class="list_of_members">
+
+            <div class="sales" style="background-color:#f1c40f">
+                <div class="dashboard-icon">
+                    <i class="fa fa-arrow-down"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d9</h3>
+                    <p>Min Fiyatlı Ürün</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="new-users" style="background-color:#e67e22">
+                <div class="dashboard-icon">
+                    <i class="fa fa-trophy"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d10</h3>
+                    <p>Max Marka</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="orders" style="background-color:#e74c3c">
+                <div class="dashboard-icon">
+                    <i class="fa fa-inbox"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d11</h3>
+                    <p>Buzdolabı Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="visitors" style="background-color:#95a5a6">
+                <div class="dashboard-icon">
+                    <i class="fa fa-laptop"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d12</h3>
+                    <p>Laptop Sayısı</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- 4. SATIR -->
+    <div class="total-content">
+        <div class="list_of_members">
+
+            <div class="sales" style="background-color:#f39c12">
+                <div class="dashboard-icon">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d13</h3>
+                    <p>En Çok Satan</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="new-users" style="background-color:#d35400">
+                <div class="dashboard-icon">
+                    <i class="fa fa-credit-card"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d14</h3>
+                    <p>Kasadaki Tutar</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="orders" style="background-color:#c0392b">
+                <div class="dashboard-icon">
+                    <i class="fa fa-shopping-bag"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d15</h3>
+                    <p>Bugünkü Satışlar</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="visitors" style="background-color:#7f8c8d">
+                <div class="dashboard-icon">
+                    <i class="fa fa-credit-card"></i>
+                </div>
+                <div class="icon-text">
+                    <h3>@ViewBag.d16</h3>
+                    <p>Bugünkü Kasa</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</body>
+</html>

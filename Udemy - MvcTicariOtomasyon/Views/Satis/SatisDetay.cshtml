@@ -1,0 +1,43 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.SatisHareket>
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Detay</h2>
+<div class="card-body">
+    <table  class="table table-striped">
+        <thead>
+            <tr>
+                <th>Satış Id</th>
+                <th>Ürün</th>
+                <th>Cari</th>
+                <th>Personel</th>
+                <th>Fiyat</th>
+                <th>Adet</th>
+                <th>Toplam Fiyat</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.SatisHareketId</td>
+                <td>@x.Urun.UrunAd</td>
+                <td>@x.Cari.CariAd @x.Cari.CariSoyad</td>
+                <td>@x.Personel.PersonelAd @x.Personel.PersonelSoyad</td>
+                <td>@x.Fiyat</td>
+                <td>@x.Adet</td>
+                <td>@x.ToplamTutar</td>
+                <td>@x.Tarih.ToString("dd MMMM yyyy")</td>
+            </tr>
+        }
+    </table>
+    <a href="/Satis/SatisYazdir" class="btn btn-warning">Yazdır</a>
+</div>
+
+
+
+
+

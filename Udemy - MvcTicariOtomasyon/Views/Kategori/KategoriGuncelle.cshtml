@@ -1,0 +1,23 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Kategori
+@{
+    ViewBag.Title = "KategoriGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Kategori Güncelle</h2>
+
+    @using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+    {
+        @Html.HiddenFor(x=>x.KategoriId)
+
+<div class="mb-3">
+    <label>Kategori Adı</label>
+    @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.KategoriAd, "", new { @style = "color:red;font-weight:bold;" })
+</div>
+
+        <button class="btn btn-warning">Güncelle</button>
+        <a href="/Kategori/Index" class="btn btn-secondary">Vazgeç</a>
+    }
+</div>

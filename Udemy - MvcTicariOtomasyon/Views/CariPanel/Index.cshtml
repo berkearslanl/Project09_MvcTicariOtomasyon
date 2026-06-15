@@ -1,0 +1,146 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.Mesaj>
+@{
+    ViewBag.Title = "Profilim";
+    Layout = "~/Views/Shared/CariLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+<style>
+    /* AdminLTE listelerindeki mavi arka plan patlamasını ve renk çatışmasını çözen kısım */
+    .box-profile .list-group-item {
+        background-color: transparent !important;
+        color: #f8fafc !important; /* Yazıları beyaz yap */
+        border-bottom: 1px solid #2f3549 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+        .box-profile .list-group-item b {
+            color: #94a3b8 !important; /* Başlıkları gri yap */
+        }
+
+        .box-profile .list-group-item a.float-right {
+            background-color: transparent !important;
+            color: #3b82f6 !important; /* Değerleri mavi/vurgulu yap */
+            text-decoration: none !important;
+        }
+
+    /* Tab alanlarındaki AdminLTE yazı renklerini karanlık moda uydurma */
+    .nav-pills .nav-link:not(.active) {
+        color: #94a3b8 !important;
+    }
+
+    .post {
+        border-bottom: 1px solid #2f3549 !important;
+        color: #f8fafc !important;
+    }
+
+        .post .username a {
+            color: #3b82f6 !important;
+        }
+
+        .post .description {
+            color: #94a3b8 !important;
+        }
+</style>
+
+<div class="wrapper">
+    <section class="content mt-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="https://static.vecteezy.com/system/resources/thumbnails/036/885/313/small/blue-profile-icon-free-png.png"
+                                     alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center">@ViewBag.CariAd</h3>
+                            <p class="text-muted text-center">@ViewBag.CariSehir</p>
+
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item">
+                                    <b>Toplam Satış:</b> <a class="float-right">@ViewBag.toplamsatis işlem</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Toplam Satış Tutarı:</b> <a class="float-right">@ViewBag.toplamtutar ₺</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Toplam Ürün:</b> <a class="float-right">@ViewBag.toplamurun adet ürün</a>
+                                </li>
+                            </ul>
+
+                            <a href="/CariPanel/KargoTakip" class="btn btn-primary btn-block"><b>Kargolarım</b></a>
+                        </div>
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Hakkımda</h3>
+                        </div>
+                        <div class="card-body">
+                            <strong><i class="fas fa-book mr-1"></i> İletişim</strong>
+                            <p class="text-muted">@ViewBag.CariMail</p>
+                            <hr style="border-top: 1px solid #2f3549;">
+
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Şehir</strong>
+                            <p class="text-muted">@ViewBag.CariSehir, Türkiye</p>
+                            <hr style="border-top: 1px solid #2f3549;">
+
+                            <strong><i class="fas fa-pencil-alt mr-1"></i> Şifre</strong>
+                            <p class="text-muted">@ViewBag.CariSifre</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Mesajlar</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Duyurular</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ayarlar</a></li>
+                            </ul>
+                        </div><div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    @foreach (var x in Model)
+                                    {
+                                        <div class="post">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="https://w7.pngwing.com/pngs/333/868/png-transparent-mail-computer-icons-email-graphy-e-mail-miscellaneous-angle-rectangle-thumbnail.png" alt="user image">
+                                                <span class="username">
+                                                    <a href="#">@x.Gönderici</a>
+                                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                                </span>
+                                                <span class="description">@x.Konu - @x.Tarih.ToString("dd MMMM yyyy")</span>
+                                            </div>
+                                            <p>@x.icerik</p>
+                                            <p>
+                                                <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Yanıtla</a>
+                                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Beğen</a>
+                                            </p>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="tab-pane" id="timeline">
+                                    @Html.Action("DuyuruPartial", "CariPanel")
+                                </div>
+                                <div class="tab-pane" id="settings">
+                                    @Html.Partial("Guncelle", "CariPanel")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>

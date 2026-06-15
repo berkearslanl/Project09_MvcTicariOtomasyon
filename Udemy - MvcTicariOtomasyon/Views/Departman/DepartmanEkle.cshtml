@@ -1,0 +1,22 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Departmant
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Yeni Departman Ekle</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Departman Adı</label>
+            <input type="text" name="DepartmantAd" class="form-control" />
+            @Html.ValidationMessageFor(x => x.DepartmantAd, "", new { @style = "color:red;font-weight:bold;" })
+        </div>
+
+        <button class="btn btn-primary">Kaydet</button>
+        <a href="/Departman/Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>
+
+

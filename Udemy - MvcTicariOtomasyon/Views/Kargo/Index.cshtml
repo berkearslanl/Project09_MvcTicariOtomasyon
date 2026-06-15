@@ -1,0 +1,45 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.KargoDetay>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Kargolar</h2>
+    <div class="d-flex justify-content-end mb-3">
+        @using (Html.BeginForm("Index", "Kargo", FormMethod.Get, new { @class = "d-flex" }))
+        {
+            @Html.TextBox("p", null, new
+            {
+                @class = "form-control me-2",
+                placeholder = "Kargo ara..."
+            })
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        }
+    </div>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Takip Kodu</th>
+            <th>Personel</th>
+            <th>Alıcı</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th>@x.TakipKodu</th>
+                <td>@x.Personel</td>
+                <td>@x.Alici</td>
+                <td>@x.Tarih</td>
+                <td>
+                    <a href="/Kargo/KargoDetay/@x.TakipKodu" class="btn btn-info">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Kargo/KargoEkle" class="btn btn-outline-primary">Yeni Kargo</a>
+</div>

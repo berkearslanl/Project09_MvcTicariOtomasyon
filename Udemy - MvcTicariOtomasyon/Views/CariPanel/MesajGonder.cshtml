@@ -1,0 +1,76 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Mesaj
+@{
+    ViewBag.Title = "Yeni Mesaj Oluştur";
+    Layout = "~/Views/Shared/CariLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h4 text-gray-800 mb-0">✍️ Yeni Mesaj Gönder</h2>
+        <div>
+            <a href="/CariPanel/MesajListesi" class="btn btn-outline-secondary btn-sm font-weight-bold shadow-sm mr-2">
+                📥 Gelen Kutusu
+            </a>
+            <a href="/CariPanel/GonderilenMesajlar" class="btn btn-outline-secondary btn-sm font-weight-bold shadow-sm">
+                🚀 Giden Kutusu
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+
+            @using (Html.BeginForm("MesajGonder", "CariPanel", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Gönderici (Kilitli/Readonly - Session'dan gelen değer) -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-form text-muted font-weight-bold">Kimden:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control bg-light text-muted" value="@ViewBag.GondericiMail" readonly name="Gönderici" />
+                    </div>
+                </div>
+
+                <!-- Alıcı Mail -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-dark font-weight-bold">Kime (Alıcı Mail):</label>
+                    <div class="col-sm-10">
+                        @*@Html.TextBoxFor(x => x.Alici, new { @class = "form-control", placeholder = "ornek@mail.com", required = "required", type = "email" })*@
+                        <input type="email" name="Alici" class="form-control" placeholder="ornek@gmail.com" required value="@ViewBag.AliciMail" />
+                        @Html.ValidationMessageFor(x => x.Alici, "", new { @class = "text-danger small" })
+                    </div>
+                </div>
+
+                <!-- Konu -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-dark font-weight-bold">Konu:</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.Konu, new { @class = "form-control", placeholder = "Mesaj konusunu yazınız...", required = "required" })
+                        @Html.ValidationMessageFor(x => x.Konu, "", new { @class = "text-danger small" })
+                    </div>
+                </div>
+
+                <!-- Mesaj İçeriği -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-dark font-weight-bold">Mesajınız:</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(x => x.icerik, new { @class = "form-control", rows = "8", placeholder = "Mesajınızı buraya yazın...", required = "required", style = "resize: none;" })
+                        @Html.ValidationMessageFor(x => x.icerik, "", new { @class = "text-danger small" })
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- Butonlar -->
+                <div class="form-group row mb-0">
+                    <div class="col-sm-10 offset-sm-2 text-right">
+                        <button type="button" onclick="window.history.back();" class="btn btn-light border px-4 mr-2">İptal Et</button>
+                        <button type="submit" class="btn btn-primary px-5 shadow-sm">🚀 Gönder</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

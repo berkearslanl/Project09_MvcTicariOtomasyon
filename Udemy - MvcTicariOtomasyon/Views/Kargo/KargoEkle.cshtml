@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Yeni Kargo Ekle</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Açıklama</label>
+            <input type="text" name="Aciklama" class="form-control" />
+            <br />
+            <label>Takip Kodu</label>
+            <input type="text" name="TakipKodu" class="form-control" readonly value="@ViewBag.takipkodu" />
+            <br />
+            <label>Personel</label>
+            <input type="text" name="Personel" class="form-control" />
+            <br />
+            <label>Alıcı</label>
+            <input type="text" name="Alici" class="form-control" />
+            <br />
+        </div>
+
+        <button class="btn btn-primary">Kaydet</button>
+        <a href="/Kargo/Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>
+
+

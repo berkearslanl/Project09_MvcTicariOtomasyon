@@ -1,0 +1,56 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.SatisHareket
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Satış Yap</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            @Html.LabelFor(x => x.UrunId)
+            <input type="text" name="UrunId" value="@ViewBag.urunid" class="form-control" readonly />
+            @Html.ValidationMessageFor(x => x.UrunId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            @Html.LabelFor(x => x.PersonelId)
+            @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PersonelId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            @Html.LabelFor(x => x.CariId)
+            @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cari, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CariId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            @Html.LabelFor(x => x.Adet)
+            <input type="number" name="Adet" class="form-control" id="txtAdet" onchange="sum()" onkeyup="sum()" min="0" max="@ViewBag.urunstok" placeholder="Adet Giriniz" />
+            @Html.ValidationMessageFor(x => x.Adet, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            @Html.LabelFor(x => x.Fiyat)
+            <input type="text" name="Fiyat" value="@ViewBag.fiyat" class="form-control" readonly id="txtFiyat" onkeyup="sum()" />
+            @Html.ValidationMessageFor(x => x.Fiyat, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            @Html.LabelFor(x => x.ToplamTutar)
+            <input type="text" name="ToplamTutar" class="form-control" id="txtSonuc" />
+            @Html.ValidationMessageFor(x => x.ToplamTutar, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            @Html.LabelFor(x => x.Tarih)
+            <input type="text" name="Tarih" value="@DateTime.Now" class="form-control" />
+            @Html.ValidationMessageFor(x => x.Tarih, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+        </div>
+
+        <button class="btn btn-primary">Kaydet</button>
+        <a href="/Urun/Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>
+
+<script>
+    function sum() {
+        var adet = document.getElementById('txtAdet').value;
+        var fiyat = document.getElementById('txtFiyat').value;
+        var sonuc = parseInt(adet) * parseInt(fiyat);
+        if (!isNaN(sonuc)) {
+            document.getElementById('txtSonuc').value = sonuc;
+        }
+    }
+</script>

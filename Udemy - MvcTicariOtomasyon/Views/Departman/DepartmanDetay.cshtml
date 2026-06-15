@@ -1,0 +1,33 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.Personel>
+@{
+    ViewBag.Title = "PersonelDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"><b>@ViewBag.departman</b> Departmanındaki Personeller</li>
+    </ol>
+    <table class="table table-striped">
+        <a href="/Personel/Index" class="btn btn-info" style="float:right;margin-bottom:25px;">Tüm Personelleri Gör</a>
+        <br />
+        <tr>
+            <th>Resim</th>
+            <th>Personel Adı</th>
+            <th>Personel Soyadı</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td><img src="@x.PersonelGorsel" class="img-thumbnail" style="width:100px;height:100px;object-fit:cover;border-radius:20%;" /></td>
+                <td>@x.PersonelAd</td>
+                <td>@x.PersonelSoyad</td>
+                <td>
+                    <a href="/Departman/DepartmanPersonelSatis/@x.PersonelId" class="btn btn-warning">Satışlar</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Personel/PersonelEkle" class="btn btn-outline-primary">Yeni Personel</a>
+</div>

@@ -1,0 +1,27 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.Departmant>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Departmanlar</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Departman Adı</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.DepartmantAd</td>
+                <td>
+                    <a href="/Departman/DepartmanGuncelle/@x.DepartmantId" class="btn btn-warning">Düzenle</a>
+                    <a href="/Departman/DepartmanSil/@x.DepartmantId" class="btn btn-danger">Sil</a>
+                    <a href="/Departman/DepartmanDetay/@x.DepartmantId" class="btn btn-info">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Departman/DepartmanEkle" class="btn btn-outline-primary">Yeni Departman</a>
+</div>

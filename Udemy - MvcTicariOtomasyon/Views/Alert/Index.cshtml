@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<br />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+
+<button class="btn btn-outline-info" id="btn1">Buton 1</button>
+<br />
+<br />
+<button class="btn btn-outline-danger" id="btn2">Buton 2</button>
+<br />
+<br />
+<button class="btn btn-outline-warning" id="btn3">Buton 3</button>
+<br />
+<br />
+<button class="btn btn-outline-primary" id="btn4">Buton 4</button>
+<br />
+<br />
+<button class="btn btn-outline-dark" id="btn5">Buton 5</button>
+<br />
+<br />
+
+
+
+
+<script>
+    $('#btn1').click(function () {
+        swal("Buton 1")
+    });
+    $('#btn2').click(function () {
+        swal("Buton Başlığı", "Buton 2")
+    });
+    $('#btn3').click(function () {
+        swal("Buton Başlığı", "Buton 3", "success")
+    });
+    $('#btn4').click(function () {
+        swal({
+            title: "Başarılı!",
+            text: "Butona bastın",
+            icon: "success",
+            button: "Evet."
+        })
+    });
+    $('#btn5').click(function () {
+        swal("Butona başarıyla bastın!").then((value) => {
+            swal(`Gayet güzel: ${value}`)
+        })
+    });
+</script>

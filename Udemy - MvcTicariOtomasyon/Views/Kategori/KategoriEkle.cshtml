@@ -1,0 +1,26 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Kategori
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<div class="card-body">
+    <h2>Yeni Kategori Ekle</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Kategori Adı</label>
+            <input type="text" name="KategoriAd" class="form-control" />
+            @Html.ValidationMessageFor(x => x.KategoriAd, "", new { @style = "color:red;font-weight:bold;" })
+        </div>
+
+        <button class="btn btn-primary" id="btn1">Kaydet</button>
+        <a href="/Kategori/Index" class="btn btn-secondary">Vazgeç</a>
+        <script>
+            $('#btn1').click(function(){
+                alert("Kategori başarılı bir şekilde eklendi!")
+            });
+        </script>
+    </form>
+</div>
+

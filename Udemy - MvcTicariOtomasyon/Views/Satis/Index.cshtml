@@ -1,0 +1,65 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Kayıtları</h2>
+<div class="card-body">
+    <table id="tbl1" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Ürün</th>
+                <th>Cari</th>
+                <th>Personel</th>
+                <th>Fiyat</th>
+                <th>Adet</th>
+                <th>Toplam Fiyat</th>
+                <th>Tarih</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Urun.UrunAd</td>
+                <td>@x.Cari.CariAd @x.Cari.CariSoyad</td>
+                <td>@x.Personel.PersonelAd @x.Personel.PersonelSoyad</td>
+                <td>@x.Fiyat</td>
+                <td>@x.Adet</td>
+                <td>@x.ToplamTutar</td>
+                <td>@x.Tarih.ToString("dd MMMM yyyy")</td>
+                <td>
+                    <a href="/Satis/SatisSil/@x.SatisHareketId" class="btn btn-danger">İptal Et</a>
+                    <a href="/Satis/SatisDetay/@x.SatisHareketId" class="btn btn-info">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Satis/SatisEkle" class="btn btn-outline-primary">Yeni Satış Yap</a>
+</div>
+
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+
+    $('#tbl1').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Turkish.json'
+        }
+    });
+
+</script>
+

@@ -1,0 +1,24 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Departmant
+@{
+    ViewBag.Title = "DepartmanGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Departman Güncelle</h2>
+
+    @using (Html.BeginForm("DepartmanGuncelle", "Departman", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.DepartmantId)
+        @Html.HiddenFor(x => x.Durum)
+
+        <div class="mb-3">
+            <label>Departman Adı</label>
+            @Html.TextBoxFor(x => x.DepartmantAd, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.DepartmantAd, "", new { @style = "color:red;font-weight:bold;" })
+        </div>
+
+        <button class="btn btn-warning">Güncelle</button>
+        <a href="/Departman/Index" class="btn btn-secondary">Vazgeç</a>
+    }
+</div>

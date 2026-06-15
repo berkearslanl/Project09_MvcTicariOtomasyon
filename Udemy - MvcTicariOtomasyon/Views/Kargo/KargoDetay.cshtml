@@ -1,0 +1,22 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.KargoTakip>
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Kargo Takip : @ViewBag.takipkodu</h2>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Açıklama</th>
+            <th>Tarih</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Aciklama</td>
+                <td>@x.TarihZaman</td>
+            </tr>
+        }
+    </table>
+</div>

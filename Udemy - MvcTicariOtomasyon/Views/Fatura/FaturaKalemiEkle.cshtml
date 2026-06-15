@@ -1,0 +1,37 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.FaturaKalem
+@{
+    ViewBag.Title = "FaturaKalemiEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Yeni Fatura Kalemi Ekle</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Fatura Id</label>
+            <input type="text" name="FaturaId" class="form-control" value="@ViewBag.faturaid" readonly/>
+            @Html.ValidationMessageFor(x => x.FaturaId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Açıklama</label>
+            <input type="text" name="Aciklama" class="form-control" />
+            @Html.ValidationMessageFor(x => x.Aciklama, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Miktar</label>
+            <input type="text" name="Miktar" class="form-control" />
+            @Html.ValidationMessageFor(x => x.Miktar, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Birim Fiyat</label>
+            <input type="text" name="BirimFiyat" class="form-control" />
+            @Html.ValidationMessageFor(x => x.BirimFiyat, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Tutar</label>
+            <input type="text" name="Tutar" class="form-control" />
+            @Html.ValidationMessageFor(x => x.Tutar, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+        </div>
+
+        <button class="btn btn-primary">Kaydet</button>
+        <a href="/Fatura/Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>

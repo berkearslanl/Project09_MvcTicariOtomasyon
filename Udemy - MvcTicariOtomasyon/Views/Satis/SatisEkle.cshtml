@@ -1,0 +1,42 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.SatisHareket
+@{
+    ViewBag.Title = "SatisEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <h2>Yeni Satış Ekle</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Ürün Seçimi</label>
+            @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.urun, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.UrunId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Personel Seçimi</label>
+            @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PersonelId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Cari Seçimi</label>
+            @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cari, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CariId, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Adet</label>
+            <input type="text" name="Adet" class="form-control" />
+            @Html.ValidationMessageFor(x => x.Adet, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Fiyat</label>
+            <input type="text" name="Fiyat" class="form-control" />
+            @Html.ValidationMessageFor(x => x.Fiyat, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+            <label>Toplam Tutar</label>
+            <input type="text" name="ToplamTutar" class="form-control" />
+            @Html.ValidationMessageFor(x => x.ToplamTutar, "", new { @style = "color:red;font-weight:bold;" })
+            <br />
+        </div>
+
+        <button class="btn btn-primary">Kaydet</button>
+        <a href="/Satis/Index" class="btn btn-secondary">Vazgeç</a>
+    </form>
+</div>
+

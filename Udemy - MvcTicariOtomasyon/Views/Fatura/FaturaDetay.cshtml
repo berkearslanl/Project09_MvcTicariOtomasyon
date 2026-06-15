@@ -1,0 +1,31 @@
+﻿@model List<Udemy___MvcTicariOtomasyon.Models.Entities.FaturaKalem>
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card-body">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"><b>Fatura Sıra No: </b>@ViewBag.sırano</li>
+    </ol>
+    <table class="table table-striped">
+        <a href="/Fatura/Index" class="btn btn-info" style="float:right;margin-bottom:25px;">Tüm Faturaları Gör</a>
+        <br />
+        <tr>
+            <th>Açıklama</th>
+            <th>Miktar</th>
+            <th>Birim Fiyat</th>
+            <th>Tutar</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Aciklama</td>
+                <td>@x.Miktar</td>
+                <td>@x.BirimFiyat</td>
+                <td>@x.Tutar</td>
+            </tr>
+        }
+    </table>
+    <a href="/Fatura/FaturaKalemiEkle/@ViewBag.fatura" class="btn btn-outline-primary">Yeni Fatura Kalemi</a>
+</div>

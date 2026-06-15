@@ -1,0 +1,39 @@
+﻿@model Udemy___MvcTicariOtomasyon.Models.Entities.Class2
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<div>
+    <h2>Kategoriler - Ürünler</h2>
+</div>
+<br />
+<div>
+    @Html.Label("Kategoriler")
+    @Html.DropDownList("KategoriDropdown", Model.Kategoriler, "---Kategori Seçiniz---", new { @class = "form-control" })
+    <br />
+    @Html.Label("Ürünler")
+    @Html.DropDownList("UrunDropdown", Model.Urunler, "---Ürün Seçiniz---", new { @class = "form-control" })
+</div>
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<script>
+    $(function () {
+        $('#KategoriDropdown').change(function () {
+            var id = $('#KategoriDropdown').val();
+            $.ajax({
+                url: '/Kategori/UrunGetir',
+                data: { p: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#UrunDropdown').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#UrunDropdown').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+            });
+        });
+    });
+</script>

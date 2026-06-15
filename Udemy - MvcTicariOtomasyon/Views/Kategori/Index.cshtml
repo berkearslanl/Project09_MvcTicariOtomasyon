@@ -1,0 +1,33 @@
+﻿@model PagedList.IPagedList<Udemy___MvcTicariOtomasyon.Models.Entities.Kategori>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="card-body">
+    <h2>Kategoriler</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Kategori Adı</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.KategoriAd</td>
+                <td>
+                    <a href="/Kategori/KategoriGuncelle/@x.KategoriId" class="btn btn-warning">Düzenle</a>
+                    <a href="/Kategori/KategoriSil/@x.KategoriId" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string> { "page-link" }
+})
+    <a href="/Kategori/KategoriEkle" class="btn btn-outline-primary">Yeni Kategori</a>
+</div>
